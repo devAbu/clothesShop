@@ -330,10 +330,9 @@
 	</section>
 
 
-	<!-- TODO: da li da bude slicno ko na shoeshion -->
-	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
-		<div class="flex-w p-b-90">
-			<div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
+	<footer class="bg6 p-l-45 p-r-45">
+		<div class="flex-w p-b-30">
+			<div class="w-size20 p-t-30 p-l-15 p-r-15 respon3">
 				<h4 class="s-text12 p-b-30">
 					IME STRANICE
 				</h4>
@@ -344,35 +343,43 @@
 						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us
 						on (+1) 96 716 6879
 					</p>
-
-					<div class="flex-m p-t-30">
-						<!-- TODO: social media koje cemo koristit za reklamu -->
-						<!-- TODO: mozda da budu pored opisa -->
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
-						<a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
-					</div>
 				</div>
 			</div>
-			<!-- TODO: stavit copyright -->
+
+			<div class="w-size2 p-t-30 p-l-15 p-r-15 respon3">
+				<div class="flex-m p-t-30">
+					<!-- TODO: social media koje cemo koristit za reklamu -->
+					<!-- TODO: promijenit mozda boju na hover -->
+					<a href="#" class="fs-30 color1 p-r-25 fa fa-facebook"></a>
+					<a href="#" class="fs-30 color1 p-r-25 fa fa-instagram"></a>
+					<a href="#" class="fs-30 color1 p-r-25 fa fa-pinterest-p"></a>
+					<a href="#" class="fs-30 color1 p-r-25 fa fa-snapchat-ghost"></a>
+					<a href="#" class="fs-30 color1 p-r-25 fa fa-youtube-play"></a>
+				</div>
+			</div>
+
+
+			<div class="col-md-12 text-center mt-5">
+				<p>
+					&copy; <span id="currentYear"></span> All rights reserved | Created by <a
+						href="https://abocdev.com/">Aboc</a>
+				</p>
+			</div>
+
 		</div>
 	</footer>
 
 
 
-	<!-- Back to top -->
 	<div class="btn-back-to-top bg0-hov" id="myBtn">
 		<span class="symbol-btn-back-to-top">
-			<!-- TODO: druga stralica...mozda da se pomijera -->
-			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+			<i class="fa fa-angle-up" aria-hidden="true"></i>
 		</span>
 	</div>
 
-	<!-- TODO: vidjet sta je -->
-	<div id="dropDownSelect1"></div>
-	<div id="dropDownSelect2"></div>
+	<!-- TODO: vidjet sta je...mislim da nema potrebe -->
+	<!-- <div id="dropDownSelect1"></div>
+	<div id="dropDownSelect2"></div> -->
 
 
 	<!-- TODO: vidjet za sta je...mozda obrisat -->
@@ -410,6 +417,11 @@
 		});
 	</script>
 	<script src="js/main.js"></script>
+
+	<script>
+		var year = new Date().getFullYear()
+		$('#currentYear').html(year)
+	</script>
 
 </body>
 

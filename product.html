@@ -6,24 +6,27 @@
 	<title>Shop</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- TODO: ubacit ostale meta tagove -->
+	<meta name="author" content="ABOC">
+	<meta name="keywords" content="online shop, clothes, best e-commerce, h&m">
+	<!-- TODO: opis -->
+	<meta name="description" content="">
 	<!-- TODO: ovdje logo -->
 	<link rel="shortcut icon" type="image/x-icon" href="images/icons/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<!-- TODO: vidjet za sta je i mozda obrisat -->
+
 	<link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/elegant-font/html-css/style.css">
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+	<!-- TODO: vidjet za sta je i mozda obrisat -->
 	<link rel="stylesheet" type="text/css" href="vendor/noui/nouislider.min.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<!-- TODO: prebacit u style.css -->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body class="animsition">
@@ -31,24 +34,19 @@
 	<header class="header1">
 		<div class="container-menu-header">
 			<div class="topbar">
-				<!-- TODO: prebacit ih u sredinu -->
 				<div class="topbar-social">
 					<a href="#" class="topbar-social-item fa fa-facebook"></a>
 					<a href="#" class="topbar-social-item fa fa-instagram"></a>
 					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
-					<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
 				</div>
 			</div>
 
 			<div class="wrap_header">
-				<!-- Logo -->
 				<a href="index.html" class="logo">
 					<!-- TODO: ovdje stavit nas logo -->
 					<img src="images/icons/logo.png" alt="logo">
 				</a>
 
-				<!-- Menu -->
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
@@ -72,7 +70,6 @@
 				<img src="images/icons/logo.png" alt="logo">
 			</a>
 
-			<!-- Button show menu -->
 			<div class="btn-show-menu">
 				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
 					<span class="hamburger-box">
@@ -82,18 +79,14 @@
 			</div>
 		</div>
 
-		<!-- Menu Mobile -->
 		<div class="wrap-side-menu">
 			<nav class="side-menu">
 				<ul class="main-menu">
 					<li class="item-topbar-mobile p-l-10">
-						<!-- TODO: u sredinu -->
 						<div class="topbar-social-mobile">
 							<a href="#" class="topbar-social-item fa fa-facebook"></a>
 							<a href="#" class="topbar-social-item fa fa-instagram"></a>
 							<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-							<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
-							<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
 						</div>
 					</li>
 
@@ -109,9 +102,7 @@
 		</div>
 	</header>
 
-	<!-- TODO: vijdet mozda malo veca slika...tekst izmijenit -->
-	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m"
-		style="background-image: url(images/heading-pages-02.jpg);">
+	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(images/winterShop.jpg);">
 		<h2 class="l-text2 t-center">
 			Women
 		</h2>
@@ -121,7 +112,6 @@
 	</section>
 
 
-	<!-- Content page -->
 	<section class="bgwhite p-t-55 p-b-65">
 		<div class="container">
 			<div class="row">
@@ -129,7 +119,6 @@
 					<div class="leftbar p-r-20 p-r-0-sm">
 						<!-- TODO: vidjet koje nam kategorije trebaju -->
 						<!-- TODO: filtere uradit -->
-						<!-- TODO: da bude fixed -->
 						<h4 class="m-text14 p-b-7">
 							Categories
 						</h4>
@@ -143,19 +132,15 @@
 
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
+									<!-- TODO: podkategorije -->
 									Women
 								</a>
 							</li>
 
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
+									<!-- TODO: podkategorije -->
 									Men
-								</a>
-							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Kids
 								</a>
 							</li>
 
@@ -182,7 +167,6 @@
 
 							<div class="flex-sb-m flex-w p-t-16">
 								<div class="w-size11">
-									<!-- Button -->
 									<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
 										Apply
 									</button>
@@ -193,68 +177,6 @@
 									Range: $<span id="value-lower">610</span> - $<span id="value-upper">980</span>
 								</div>
 							</div>
-						</div>
-
-						<!-- TODO: mozda necemo imat -->
-						<div class="filter-color p-t-22 p-b-50 bo3">
-							<div class="m-text15 p-b-12">
-								Color
-							</div>
-
-							<ul class="flex-w">
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter1" type="checkbox"
-										name="color-filter1">
-									<label class="color-filter color-filter1" for="color-filter1"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter2" type="checkbox"
-										name="color-filter2">
-									<label class="color-filter color-filter2" for="color-filter2"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter3" type="checkbox"
-										name="color-filter3">
-									<label class="color-filter color-filter3" for="color-filter3"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter4" type="checkbox"
-										name="color-filter4">
-									<label class="color-filter color-filter4" for="color-filter4"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter5" type="checkbox"
-										name="color-filter5">
-									<label class="color-filter color-filter5" for="color-filter5"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter6" type="checkbox"
-										name="color-filter6">
-									<label class="color-filter color-filter6" for="color-filter6"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter7" type="checkbox"
-										name="color-filter7">
-									<label class="color-filter color-filter7" for="color-filter7"></label>
-								</li>
-							</ul>
-						</div>
-
-						<!-- TODO: mozda na vrhu u sredini (umjesto sorting i price - necemo to za sad) -->
-						<div class="search-product pos-relative bo4 of-hidden">
-							<!-- TODO: malo bolji dizajn mozda -->
-							<input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product"
-								placeholder="Search Products...">
-
-							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
-							</button>
 						</div>
 					</div>
 				</div>
@@ -284,6 +206,15 @@
 							</div>
 						</div> -->
 
+						<div class="search-product pos-relative bo4 of-hidden">
+							<input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product"
+								placeholder="Search Products or Brands...">
+
+							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
+							</button>
+						</div>
+
 						<span class="s-text8 p-t-5 p-b-5">
 							<!-- TODO: baza -->
 							Showing 1–12 of 16 results
@@ -298,7 +229,6 @@
 
 									<div class="block2-overlay trans-0-4">
 										<div class="block2-btn-addcart w-size1 trans-0-4">
-											<!-- Button -->
 											<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
 												Buy now
 											</button>
@@ -319,8 +249,8 @@
 						</div>
 					</div>
 
-					<!-- TODO: pravi pagination...mozda i strelice ubacit -->
-					<div class="pagination flex-m flex-w p-t-26">
+					<!-- TODO: pravi pagination-->
+					<div class="flex-m flex-w flex-c-m">
 						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
 						<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
 					</div>
@@ -348,13 +278,9 @@
 
 			<div class="w-size2 p-t-30 p-l-15 p-r-15 respon3">
 				<div class="flex-m p-t-30">
-					<!-- TODO: social media koje cemo koristit za reklamu -->
-					<!-- TODO: promijenit mozda boju na hover -->
 					<a href="#" class="fs-30 color1 p-r-25 fa fa-facebook"></a>
 					<a href="#" class="fs-30 color1 p-r-25 fa fa-instagram"></a>
 					<a href="#" class="fs-30 color1 p-r-25 fa fa-pinterest-p"></a>
-					<a href="#" class="fs-30 color1 p-r-25 fa fa-snapchat-ghost"></a>
-					<a href="#" class="fs-30 color1 p-r-25 fa fa-youtube-play"></a>
 				</div>
 			</div>
 
@@ -377,24 +303,21 @@
 		</span>
 	</div>
 
-	<!-- TODO: vidjet sta je...mislim da nema potrebe -->
-	<!-- <div id="dropDownSelect1"></div>
-	<div id="dropDownSelect2"></div> -->
-
-
-	<!-- TODO: vidjet za sta je...mozda obrisat -->
 	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
 	<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
 	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+	<!-- <script type="text/javascript" src="vendor/select2/select2.min.js"></script> -->
+	<!-- TODO: vidjet sta su -->
 	<script type="text/javascript" src="vendor/daterangepicker/moment.min.js"></script>
 	<script type="text/javascript" src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="vendor/noui/nouislider.min.js"></script>
+
 	<script type="text/javascript" src="vendor/slick/slick.min.js"></script>
 	<script type="text/javascript" src="js/slick-custom.js"></script>
-	<script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
-	<script type="text/javascript" src="vendor/noui/nouislider.min.js"></script>
-	<!-- TODO: ovo je za cijenu  -->
+	<!-- <script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script> -->
+
+	<!-- TODO: ovo je za cijenu..mozda cu ga promijenit  -->
 	<script type="text/javascript">
 		var filterBar = document.getElementById('filter-bar');
 

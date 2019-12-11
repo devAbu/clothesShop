@@ -70,8 +70,7 @@ a:focus {
 
 a:hover {
   text-decoration: none;
-  /* TODO: skontat drugu boju */
-  color: #e65540;
+  color: #021ab8;
 }
 
 h1,
@@ -179,7 +178,7 @@ iframe {
   -o-animation: ball-scale infinite linear .75s;
   animation: ball-scale infinite linear .75s;
   border-radius: 100%;
-  background-color: #e65540;
+  background-color: #021ab8;
 }
 
 @-webkit-keyframes ball-scale {
@@ -371,12 +370,12 @@ iframe {
 }
 
 .select2-container .select2-results__option[aria-selected="true"] {
-  background-color: #e65540;
+  background-color: #021ab8;
   color: white;
 }
 
 .select2-container .select2-results__option--highlighted[aria-selected] {
-  background-color: #e65540;
+  background-color: #021ab8;
   color: white;
 }
 
@@ -577,7 +576,7 @@ iframe {
 }
 
 .logo img {
-  max-height: 27px;
+  max-height: 75px;
 }
 
 .main_menu {
@@ -611,7 +610,7 @@ iframe {
 }
 
 li.sale-noti>a {
-  color: #e65540;
+  color: #021ab8;
 }
 
 .main_menu>li:hover>a {
@@ -673,7 +672,7 @@ li.sale-noti>a {
 }
 
 .sub_menu>li:hover>a {
-  color: #e65540;
+  color: #021ab8;
   text-decoration: none;
 }
 
@@ -977,7 +976,7 @@ li.sale-noti>a {
 }
 
 .item-menu-mobile {
-  background-color: #e65540;
+  background-color: #021ab8;
 }
 
 .side-menu .main-menu>li>a {
@@ -1034,7 +1033,7 @@ li.sale-noti>a {
 .side-menu .sub-menu a:hover {
   text-decoration: none;
   padding-left: 20px;
-  color: #e65540 !important;
+  color: #021ab8 !important;
 }
 
 .side-menu .sub-menu {
@@ -1296,7 +1295,7 @@ li.sale-noti>a {
 }
 
 .arrow-slick1:hover {
-  background-color: #e65540;
+  background-color: #021ab8;
 }
 
 .next-slick1 {
@@ -1331,6 +1330,10 @@ li.sale-noti>a {
   .wrap-content-slide1 .xl-text2,
   .wrap-content-slide1 .xl-text1 {
     font-size: 50px;
+  }
+
+  .search-product {
+    width: 100%;
   }
 
   .wrap-content-slide1 .m-text27,
@@ -1449,7 +1452,7 @@ li.sale-noti>a {
 }
 
 .swal-button {
-  background-color: #e65540;
+  background-color: #021ab8;
   font-family: Montserrat-Regular;
   font-size: 15px;
   color: white;
@@ -1467,7 +1470,7 @@ li.sale-noti>a {
 }
 
 .swal-button:active {
-  background-color: #e65540;
+  background-color: #021ab8;
 }
 
 .swal-title {
@@ -1528,7 +1531,7 @@ li.sale-noti>a {
 }
 
 .block2-labelsale::before {
-  background-color: #e65540;
+  background-color: #021ab8;
   content: 'Sale';
 }
 
@@ -1597,7 +1600,7 @@ li.sale-noti>a {
 
 .block2-btn-towishlist .icon_heart {
   display: block;
-  color: #e65540;
+  color: #021ab8;
 }
 
 .block2-overlay:hover {
@@ -2034,7 +2037,7 @@ li.sale-noti>a {
 }
 
 .tag-item:hover {
-  border: 1px solid #e65540;
+  border: 1px solid #021ab8;
 }
 
 .tab01 .nav-tabs {
@@ -2260,4 +2263,22 @@ input.num-product::-webkit-inner-spin-button {
     -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
   }
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  background: white;
+}
+
+input[type='checkbox']:hover {
+  cursor: pointer;
+}
+
+.categoryLabel {
+  width: 70%;
+}
+
+.categoryLabel:hover {
+  cursor: pointer;
 }

@@ -9968,7 +9968,7 @@
 .m-text8 {
 	font-family: Montserrat-Regular;
 	font-size: 16px;
-	color: #e65540;
+	color: #021ab8;
 	text-transform: uppercase;
 }
 
@@ -10158,7 +10158,7 @@
 }
 
 .color0 {
-	color: #e65540;
+	color: #021ab8;
 }
 
 .color1 {
@@ -10170,7 +10170,7 @@
 }
 
 .color0-hov:hover {
-	color: #e65540;
+	color: #021ab8;
 }
 
 .size1 {
@@ -10419,7 +10419,7 @@
 }
 
 .bg0 {
-	background-color: #e65540;
+	background-color: #021ab8;
 }
 
 .bg1 {
@@ -10457,7 +10457,7 @@
 }
 
 .bg0-hov:hover {
-	background-color: #e65540;
+	background-color: #021ab8;
 }
 
 .bg1-overlay {
@@ -10610,7 +10610,7 @@
 	position: absolute;
 	width: 0;
 	height: 1px;
-	background-color: #e65540;
+	background-color: #021ab8;
 	left: 0;
 	bottom: -1px;
 	-webkit-transition: all 0.3s;
@@ -10624,7 +10624,7 @@
 }
 
 .eff2:active {
-	background-color: #e65540;
+	background-color: #021ab8;
 	color: white;
 }
 
@@ -10680,7 +10680,7 @@
 }
 
 .hov1:hover {
-	background-color: #e65540;
+	background-color: #021ab8;
 	color: white;
 }
 

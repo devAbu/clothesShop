@@ -1,4 +1,3 @@
-<!-- TODO: prebacit u shop.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +9,7 @@
 	<meta name="keywords" content="online shop, clothes, best e-commerce, h&m">
 	<!-- TODO: opis -->
 	<meta name="description" content="">
-	<!-- TODO: ovdje logo -->
-	<link rel="shortcut icon" type="image/x-icon" href="images/icons/favicon.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="images/logoIco.ico" />
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
@@ -43,8 +41,7 @@
 
 			<div class="wrap_header">
 				<a href="index.html" class="logo">
-					<!-- TODO: ovdje stavit nas logo -->
-					<img src="images/icons/logo.png" alt="logo">
+					<img src="images/logoPNG.png" alt="logo">
 				</a>
 
 				<div class="wrap_menu">
@@ -55,7 +52,7 @@
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="shop.html">Shop</a>
 							</li>
 						</ul>
 					</nav>
@@ -66,8 +63,7 @@
 		<div class="wrap_header_mobile">
 
 			<a href="index.html" class="logo-mobile">
-				<!-- TODO: nas logo -->
-				<img src="images/icons/logo.png" alt="logo">
+				<img src="images/logoPNG.png" alt="logo">
 			</a>
 
 			<div class="btn-show-menu">
@@ -95,7 +91,7 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.html">Shop</a>
+						<a href="shop.html">Shop</a>
 					</li>
 				</ul>
 			</nav>
@@ -117,7 +113,6 @@
 			<div class="row">
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
 					<div class="leftbar p-r-20 p-r-0-sm">
-						<!-- TODO: vidjet koje nam kategorije trebaju -->
 						<!-- TODO: filtere uradit -->
 						<h4 class="m-text14 p-b-7">
 							Categories
@@ -131,17 +126,68 @@
 							</li>
 
 							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									<!-- TODO: podkategorije -->
-									Women
+								<a class="s-text13" data-toggle="collapse" href="#menCategories" role="button"
+									aria-expanded="false" aria-controls="collapseExample">
+									Men
 								</a>
+								<ul class="collapse m-l-10" id="menCategories">
+									<li>
+										<label for="menJackets" class="categoryLabel">Jackets</label>
+
+										<input type="checkbox" name="menJackets" id="menJackets">
+									</li>
+									<li>
+										<label for="menSweatshirts" class="categoryLabel">Sweatshirts & Hoodies</label>
+										<input type="checkbox" name="menSweatshirts" id="menSweatshirts">
+									</li>
+									<li>
+										<label for="menTshirts" class="categoryLabel">T-shirts</label>
+										<input type="checkbox" name="menTshirts" id="menTshirts">
+									</li>
+									<li>
+										<label for="menJeans" class="categoryLabel">Jeans</label>
+										<input type="checkbox" name="menJeans" id="menJeans">
+									</li>
+									<li>
+										<label for="menAccessories" class="categoryLabel">Accessories</label>
+										<input type="checkbox" name="menAccessories" id="menAccessories">
+									</li>
+								</ul>
 							</li>
 
 							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									<!-- TODO: podkategorije -->
-									Men
+								<a class="s-text13" data-toggle="collapse" href="#womenCategories" role="button"
+									aria-expanded="false" aria-controls="collapseExample">
+									Women
 								</a>
+								<ul class="collapse m-l-10" id="womenCategories">
+									<li>
+										<label for="womenJackets" class="categoryLabel">Jackets</label>
+
+										<input type="checkbox" name="womenJackets" id="womenJackets">
+									</li>
+									<li>
+										<label for="womenSweatshirts" class="categoryLabel">Sweatshirts &
+											Hoodies</label>
+										<input type="checkbox" name="womenSweatshirts" id="womenSweatshirts">
+									</li>
+									<li>
+										<label for="womenTshirts" class="categoryLabel">T-shirts</label>
+										<input type="checkbox" name="womenTshirts" id="womenTshirts">
+									</li>
+									<li>
+										<label for="womenJeans" class="categoryLabel">Jeans</label>
+										<input type="checkbox" name="womenJeans" id="womenJeans">
+									</li>
+									<li>
+										<label for="womenDresses" class="categoryLabel">Dresses</label>
+										<input type="checkbox" name="womenDresses" id="womenDresses">
+									</li>
+									<li>
+										<label for="womenAccessories" class="categoryLabel">Accessories</label>
+										<input type="checkbox" name="womenAccessories" id="womenAccessories">
+									</li>
+								</ul>
 							</li>
 
 							<li class="p-t-4">
@@ -151,7 +197,6 @@
 							</li>
 						</ul>
 
-						<!-- TODO: filter po cijeni -->
 						<h4 class="m-text14 p-b-32">
 							Filters
 						</h4>
@@ -168,13 +213,14 @@
 							<div class="flex-sb-m flex-w p-t-16">
 								<div class="w-size11">
 									<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
+										<!-- TODO: disablan dok se cijena ne promijeni il kategorija se ne odabere -->
 										Apply
 									</button>
 								</div>
 
 								<div class="s-text3 p-t-10 p-b-10">
 									<!-- TODO: zavisi od artikala -->
-									Range: $<span id="value-lower">610</span> - $<span id="value-upper">980</span>
+									Range: $<span id="value-lower"></span> - $<span id="value-upper"></span>
 								</div>
 							</div>
 						</div>
@@ -225,7 +271,7 @@
 						<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 							<div class="block2">
 								<div class="block2-img wrap-pic-w of-hidden pos-relative">
-									<img src="images/item-05.jpg" alt="IMG-PRODUCT">
+									<img src="images/artikal-1.2.jpg" alt="IMG-PRODUCT">
 
 									<div class="block2-overlay trans-0-4">
 										<div class="block2-btn-addcart w-size1 trans-0-4">
@@ -264,7 +310,7 @@
 		<div class="flex-w p-b-30">
 			<div class="w-size20 p-t-30 p-l-15 p-r-15 respon3">
 				<h4 class="s-text12 p-b-30">
-					IME STRANICE
+					OUTFIT4ALL
 				</h4>
 
 				<div>

@@ -1,3 +1,6 @@
+<?php
+require 'connection/connect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,8 +129,7 @@
 							</li>
 
 							<li class="p-t-4">
-								<a class="s-text13" data-toggle="collapse" href="#menCategories" role="button"
-									aria-expanded="false" aria-controls="collapseExample">
+								<a class="s-text13" data-toggle="collapse" href="#menCategories" role="button" aria-expanded="false" aria-controls="collapseExample">
 									Men
 								</a>
 								<ul class="collapse m-l-10" id="menCategories">
@@ -156,8 +158,7 @@
 							</li>
 
 							<li class="p-t-4">
-								<a class="s-text13" data-toggle="collapse" href="#womenCategories" role="button"
-									aria-expanded="false" aria-controls="collapseExample">
+								<a class="s-text13" data-toggle="collapse" href="#womenCategories" role="button" aria-expanded="false" aria-controls="collapseExample">
 									Women
 								</a>
 								<ul class="collapse m-l-10" id="womenCategories">
@@ -219,7 +220,6 @@
 								</div>
 
 								<div class="s-text3 p-t-10 p-b-10">
-									<!-- TODO: zavisi od artikala -->
 									Range: $<span id="value-lower"></span> - $<span id="value-upper"></span>
 								</div>
 							</div>
@@ -229,32 +229,8 @@
 
 				<div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
 					<div class="flex-sb-m flex-w p-b-35">
-						<!-- <div class="flex-w">
-							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
-									<option>Default Sorting</option>
-									<option>Popularity</option>
-									<option>Price: low to high</option>
-									<option>Price: high to low</option>
-								</select>
-							</div>
-
-							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
-									<option>Price</option>
-									<option>$0.00 - $50.00</option>
-									<option>$50.00 - $100.00</option>
-									<option>$100.00 - $150.00</option>
-									<option>$150.00 - $200.00</option>
-									<option>$200.00+</option>
-
-								</select>
-							</div>
-						</div> -->
-
 						<div class="search-product pos-relative bo4 of-hidden">
-							<input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product"
-								placeholder="Search Products or Brands...">
+							<input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products or Brands...">
 
 							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
 								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
@@ -262,16 +238,32 @@
 						</div>
 
 						<span class="s-text8 p-t-5 p-b-5">
-							<!-- TODO: baza -->
-							Showing 1–12 of 16 results
+							<?php
+							$sql = "select * from product";
+
+							$result = $dbc->query($sql);
+
+							$count = $result->num_rows;
+
+							echo 'Showing ' . $count . ' results';
+							?>
+
 						</span>
 					</div>
 
 					<div class="row">
-						<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+						<?php
+						$sql = "SELECT * FROM product";
+						$result = $dbc->query($sql);
+
+						$count = $result->num_rows;
+
+						if ($count > 0) {
+							while ($row = $result->fetch_assoc()) {
+								echo '<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 							<div class="block2">
 								<div class="block2-img wrap-pic-w of-hidden pos-relative">
-									<img src="images/artikal-1.2.jpg" alt="IMG-PRODUCT">
+									<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $row["name"] . '">
 
 									<div class="block2-overlay trans-0-4">
 										<div class="block2-btn-addcart w-size1 trans-0-4">
@@ -283,23 +275,26 @@
 								</div>
 
 								<div class="block2-txt p-t-20">
-									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-										Coach slim easton black
+									<a href="singleProduct.html" class="block2-name dis-block s-text3 p-b-5">
+										' . $row["name"] . '
 									</a>
 
 									<span class="block2-price m-text6 p-r-5">
-										$165.90
+										$' . $row["price"] . '
 									</span>
 								</div>
 							</div>
-						</div>
+						</div>';
+							}
+						}
+						?>
 					</div>
 
-					<!-- TODO: pravi pagination-->
-					<div class="flex-m flex-w flex-c-m">
+					<!-- TODO: uradit pagination-->
+					<!-- <div class="flex-m flex-w flex-c-m">
 						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
 						<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -333,8 +328,7 @@
 
 			<div class="col-md-12 text-center mt-5">
 				<p>
-					&copy; <span id="currentYear"></span> All rights reserved | Created by <a
-						href="https://abocdev.com/">Aboc</a>
+					&copy; <span id="currentYear"></span> All rights reserved | Created by <a href="https://abocdev.com/">Aboc</a>
 				</p>
 			</div>
 
@@ -368,11 +362,11 @@
 		var filterBar = document.getElementById('filter-bar');
 
 		noUiSlider.create(filterBar, {
-			start: [50, 200],
+			start: [0, 999],
 			connect: true,
 			range: {
-				'min': 50,
-				'max': 200
+				'min': 0,
+				'max': 999
 			}
 		});
 
@@ -381,7 +375,7 @@
 			document.getElementById('value-upper')
 		];
 
-		filterBar.noUiSlider.on('update', function (values, handle) {
+		filterBar.noUiSlider.on('update', function(values, handle) {
 			skipValues[handle].innerHTML = Math.round(values[handle]);
 		});
 	</script>

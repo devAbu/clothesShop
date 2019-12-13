@@ -42,7 +42,7 @@ require 'connection/connect.php';
 			</div>
 
 			<div class="wrap_header">
-				<a href="index.html" class="logo">
+				<a href="index.php" class="logo">
 					<img src="images/logoPNG.png" alt="logo">
 				</a>
 
@@ -50,11 +50,11 @@ require 'connection/connect.php';
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="index.html">Home</a>
+								<a href="index.php">Home</a>
 							</li>
 
 							<li>
-								<a href="shop.html">Shop</a>
+								<a href="shop.php">Shop</a>
 							</li>
 						</ul>
 					</nav>
@@ -64,7 +64,7 @@ require 'connection/connect.php';
 
 		<div class="wrap_header_mobile">
 
-			<a href="index.html" class="logo-mobile">
+			<a href="index.php" class="logo-mobile">
 				<img src="images/logoPNG.png" alt="logo">
 			</a>
 
@@ -89,11 +89,11 @@ require 'connection/connect.php';
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="index.html">Home</a>
+						<a href="index.php">Home</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="shop.html">Shop</a>
+						<a href="shop.php">Shop</a>
 					</li>
 				</ul>
 			</nav>
@@ -126,7 +126,7 @@ require 'connection/connect.php';
 					</h2>
 
 					<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
-						<a href="shop.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+						<a href="shop.php" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 							Shop Now
 						</a>
 					</div>
@@ -155,7 +155,7 @@ require 'connection/connect.php';
 				</h2>
 
 				<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
-					<a href="shop.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+					<a href="shop.php" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 						Shop Now
 					</a>
 				</div>
@@ -184,7 +184,7 @@ require 'connection/connect.php';
 			</h2>
 
 			<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
-				<a href="shop.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+				<a href="shop.php" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 					Shop Now
 				</a>
 			</div>
@@ -212,7 +212,7 @@ require 'connection/connect.php';
 						<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $row["name"] . '">
 
 						<div class="block1-wrapbtn w-size2">
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="shop.php?type=' . $row["name"] . '" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								' . $row["name"] . '
 							</a>
 						</div>
@@ -258,7 +258,7 @@ require 'connection/connect.php';
 								</div>
 							</div>
 							<div class="block2-txt p-t-20">
-								<a href="singleProduct.html" class="block2-name dis-block s-text3 p-b-5">
+								<a href="singleProduct.php" class="block2-name dis-block s-text3 p-b-5">
 									' . $row["name"] . '
 								</a>
 
@@ -296,7 +296,7 @@ require 'connection/connect.php';
 					echo '<div class="block4 wrap-pic-w">
 				<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="IMG-INSTAGRAM">
 
-				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+				<a href="javascript:void(0)" class="block4-overlay sizefull ab-t-l trans-0-4" style="cursor: default">
 					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
 						<p class="s-text10 m-b-15 h-size1 of-hidden">
 							' . $row["description"] . '

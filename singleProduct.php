@@ -41,7 +41,7 @@ require 'connection/connect.php';
 			</div>
 
 			<div class="wrap_header">
-				<a href="index.html" class="logo">
+				<a href="index.php" class="logo">
 					<img src="images/logoPNG.png" alt="logo">
 				</a>
 
@@ -49,11 +49,11 @@ require 'connection/connect.php';
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="index.html">Home</a>
+								<a href="index.php">Home</a>
 							</li>
 
 							<li>
-								<a href="shop.html">Shop</a>
+								<a href="shop.php">Shop</a>
 							</li>
 						</ul>
 					</nav>
@@ -63,7 +63,7 @@ require 'connection/connect.php';
 
 		<div class="wrap_header_mobile">
 
-			<a href="index.html" class="logo-mobile">
+			<a href="index.php" class="logo-mobile">
 				<img src="images/logoPNG.png" alt="logo">
 			</a>
 
@@ -89,11 +89,11 @@ require 'connection/connect.php';
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="index.html">Home</a>
+						<a href="index.php">Home</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="shop.html">Shop</a>
+						<a href="shop.php">Shop</a>
 					</li>
 				</ul>
 			</nav>
@@ -197,7 +197,7 @@ require 'connection/connect.php';
 								</div>
 							</div>
 							<div class="block2-txt p-t-20">
-								<a href="singleProduct.html" class="block2-name dis-block s-text3 p-b-5">
+								<a href="singleProduct.php" class="block2-name dis-block s-text3 p-b-5">
 									Herschel supply co 25l
 								</a>
 
@@ -223,7 +223,7 @@ require 'connection/connect.php';
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="singleProduct.html" class="block2-name dis-block s-text3 p-b-5">
+								<a href="singleProduct.php" class="block2-name dis-block s-text3 p-b-5">
 									Denim jacket blue
 								</a>
 
@@ -249,7 +249,7 @@ require 'connection/connect.php';
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="singleProduct.html" class="block2-name dis-block s-text3 p-b-5">
+								<a href="singleProduct.php" class="block2-name dis-block s-text3 p-b-5">
 									Coach slim easton black
 								</a>
 

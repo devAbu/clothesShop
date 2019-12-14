@@ -140,7 +140,7 @@ if (isset($_REQUEST['priceTo'])) {
 
 						<ul class="p-b-54">
 							<li class="p-t-4">
-								<a href="#" class="s-text13 active1">
+								<a href="shop.php" class="s-text13 active1">
 									All
 								</a>
 							</li>
@@ -209,8 +209,8 @@ if (isset($_REQUEST['priceTo'])) {
 							</li>
 
 							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Accesories
+								<a href="shop.php?type=accessories" class="s-text13">
+									Accessories
 								</a>
 							</li>
 						</ul>

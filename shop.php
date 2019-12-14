@@ -18,6 +18,7 @@ if (isset($_REQUEST['priceFrom'])) {
 if (isset($_REQUEST['priceTo'])) {
 	$priceTo = $_REQUEST['priceTo'];
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -229,6 +230,14 @@ if (isset($_REQUEST['priceTo'])) {
 
 						<div class="filter-price p-t-22 p-b-50 bo3">
 							<div class="m-text15 p-b-17">
+								<?php
+								if (isset($_REQUEST['type']) && isset($_REQUEST['sexType'])) {
+									echo "<input type='text' id='checkedSexType' value='" . $sexType . "' hidden>";
+									echo "<input type='text' id='checkedCategories' value='" . $type . "' hidden>";
+								}
+								echo "<input type='text' id='checkedSexType' value='" . $sexType . "' hidden>";
+								echo "<input type='text' id='checkedCategories' value='" . $type . "' hidden>";
+								?>
 								Price
 							</div>
 							<div class="wra-filter-bar">
@@ -584,10 +593,9 @@ if (isset($_REQUEST['priceTo'])) {
 				womenArray.push('dresses')
 			}
 
-			if (menArray.length > 0 || womenArray.length > 0) {
+			if (menArray.length > 0 && womenArray.length > 0) {
 				if (url.indexOf("type") == -1) {
 					if (url.indexOf("?") < 0) {
-						console.log(menArray)
 						url += "?type" + "=" + menArray + "&sexType=men,women";
 					} else {
 						url += "&type" + "=" + menArray + "&sexType=men,women";
@@ -596,7 +604,6 @@ if (isset($_REQUEST['priceTo'])) {
 			} else if (menArray.length > 0) {
 				if (url.indexOf("type") == -1) {
 					if (url.indexOf("?") < 0) {
-						console.log(menArray)
 						url += "?type" + "=" + menArray + "&sexType=men";
 					} else {
 						url += "&type" + "=" + menArray + "&sexType=men";
@@ -622,10 +629,56 @@ if (isset($_REQUEST['priceTo'])) {
 				url += "&priceTo" + "=" + priceTo;
 			}
 
-
 			window.location.href = url
 
 		})
+	</script>
+
+	<script>
+		var checkedSexType = $('#checkedSexType').val()
+		var checkedCategories = $('#checkedCategories').val()
+
+		console.log(checkedSexType)
+		console.log(checkedCategories)
+
+		if (checkedSexType == 'men') {
+			$('#menCategories').addClass('show')
+			if (checkedCategories.includes('jackets')) {
+				$('#menJackets').prop('checked', true);
+			}
+			if (checkedCategories.includes('sweatshirts')) {
+				$('#menSweatshirts').prop('checked', true);
+			}
+			if (checkedCategories.includes('tshirts')) {
+				$('#menTshirts').prop('checked', true);
+			}
+			if (checkedCategories.includes('jeans')) {
+				$('#menJeans').prop('checked', true);
+			}
+			if (checkedCategories.includes('accessories')) {
+				$('#menAccessories').prop('checked', true);
+			}
+		} else if (checkedSexType == 'women') {
+			$('#womenCategories').addClass('show')
+			if (checkedCategories.includes('jackets')) {
+				$('#womenJackets').prop('checked', true);
+			}
+			if (checkedCategories.includes('sweatshirts')) {
+				$('#womenSweatshirts').prop('checked', true);
+			}
+			if (checkedCategories.includes('tshirts')) {
+				$('#womenTshirts').prop('checked', true);
+			}
+			if (checkedCategories.includes('jeans')) {
+				$('#womenJeans').prop('checked', true);
+			}
+			if (checkedCategories.includes('accessories')) {
+				$('#womenAccessories').prop('checked', true);
+			}
+			if (checkedCategories.includes('dresses')) {
+				$('#womenDresses').prop('checked', true);
+			}
+		}
 	</script>
 
 </body>

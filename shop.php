@@ -2,10 +2,21 @@
 require 'connection/connect.php';
 if (isset($_REQUEST['type'])) {
 	$type = $_REQUEST['type'];
+	$menType = explode(",", $type);
 }
 
 if (isset($_REQUEST['sexType'])) {
 	$sexType = $_REQUEST['sexType'];
+} else {
+	$sexTypeArray = array('men', 'women');
+}
+
+if (isset($_REQUEST['priceFrom'])) {
+	$priceFrom = $_REQUEST['priceFrom'];
+}
+
+if (isset($_REQUEST['priceTo'])) {
+	$priceTo = $_REQUEST['priceTo'];
 }
 ?>
 <!DOCTYPE html>
@@ -123,7 +134,6 @@ if (isset($_REQUEST['sexType'])) {
 			<div class="row">
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
 					<div class="leftbar p-r-20 p-r-0-sm">
-						<!-- TODO: filtere uradit -->
 						<h4 class="m-text14 p-b-7">
 							Categories
 						</h4>
@@ -208,52 +218,95 @@ if (isset($_REQUEST['sexType'])) {
 						<h4 class="m-text14 p-b-32">
 							Filters
 						</h4>
+						<?php
+						if (isset($_REQUEST['priceFrom'])) {
+							echo '<input type="number" id="lowPrice" value="' . $priceFrom . '" hidden>';
+						}
+						if (isset($_REQUEST['priceTo'])) {
+							echo '<input type="number" id="highPrice" value="' . $priceTo . '" hidden>';
+						}
+						?>
 
 						<div class="filter-price p-t-22 p-b-50 bo3">
 							<div class="m-text15 p-b-17">
 								Price
 							</div>
-
 							<div class="wra-filter-bar">
 								<div id="filter-bar"></div>
 							</div>
 
 							<div class="flex-sb-m flex-w p-t-16">
 								<div class="w-size11">
-									<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
-										<!-- TODO: disablan dok se cijena ne promijeni il kategorija se ne odabere -->
+									<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4" id="filterButton">
 										Apply
 									</button>
 								</div>
 
 								<div class="s-text3 p-t-10 p-b-10">
 									Range: $<span id="value-lower"></span> - $<span id="value-upper"></span>
+									<input type="number" id="priceFrom" name="priceFrom" hidden>
+									<input type="number" id="priceTo" name="priceTo" hidden>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
 
 				<div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
 					<div class="flex-sb-m flex-w p-b-35">
-						<div class="search-product pos-relative bo4 of-hidden">
+						<!-- <div class="search-product pos-relative bo4 of-hidden">
 							<input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products or Brands...">
 
 							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
 								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
 							</button>
-						</div>
+						</div> -->
 
 						<span class="s-text8 p-t-5 p-b-5">
 							<?php
 							$sql = "select * from product";
 
-							if (!empty($type) && !empty($sexType)) {
-								$sql .= " where type = '$type' AND sexType = '$sexType'";
+							if (!empty($type) && !empty($sexType)  && !empty($priceTo)) {
+
+								if (count($menType) == 5) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType'";
+								} else if (count($menType) == 4) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
+								} else if (count($menType) == 3) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
+								} else if (count($menType) == 2) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
+								} else if (count($menType) == 1) {
+									$sql .= " where type IN ('$menType[0]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
+								}
+							} else if (!empty($type) && !empty($priceTo)) {
+
+								if (count($menType) == 5) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+								} else if (count($menType) == 4) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+								} else if (count($menType) == 3) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+								} else if (count($menType) == 2) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]') AND price between '$priceFrom' and '$priceTo' and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]') ";
+								} else if (count($menType) == 1) {
+									$sql .= " where type IN ('$menType[0]') AND price between '$priceFrom' and '$priceTo' and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]' )";
+								}
+							} else if (!empty($priceTo)) {
+								$sql .= " where price between '$priceFrom' and '$priceTo'";
 							} else if (!empty($type)) {
-								$sql .= " where type = '$type'";
-							} else if (!empty($sexType)) {
-								$sql .= " where sexType = '$sexType'";
+								if (count($menType) == 5) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
+								} else if (count($menType) == 4) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+								} else if (count($menType) == 3) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+								} else if (count($menType) == 2) {
+									$sql .= " where type IN ('$menType[0]', '$menType[1]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
+								} else if (count($menType) == 1) {
+									$sql .= " where type IN ('$menType[0]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+								}
 							}
 
 							$result = $dbc->query($sql);
@@ -269,13 +322,47 @@ if (isset($_REQUEST['sexType'])) {
 					<div class="row">
 						<?php
 						$sql = "SELECT * FROM product";
-						if (!empty($type) && !empty($sexType)) {
-							$sql .= " where type = '$type' AND sexType = '$sexType'";
+
+						if (!empty($type) && !empty($sexType) && !empty($priceTo)) {
+							if (count($menType) == 5) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo'";
+							} else if (count($menType) == 4) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
+							} else if (count($menType) == 3) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
+							} else if (count($menType) == 2) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
+							} else if (count($menType) == 1) {
+								$sql .= " where type IN ('$menType[0]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
+							}
+						} else if (!empty($type) && !empty($priceTo)) {
+							if (count($menType) == 5) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+							} else if (count($menType) == 4) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+							} else if (count($menType) == 3) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+							} else if (count($menType) == 2) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]') AND price between '$priceFrom' and '$priceTo' and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]') ";
+							} else if (count($menType) == 1) {
+								$sql .= " where type IN ('$menType[0]') AND price between '$priceFrom' and '$priceTo' and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]' )";
+							}
+						} else if (!empty($priceTo)) {
+							$sql .= " where price between '$priceFrom' and '$priceTo'";
 						} else if (!empty($type)) {
-							$sql .= " where type = '$type'";
-						} else if (!empty($sexType)) {
-							$sql .= " where sexType = '$sexType'";
+							if (count($menType) == 5) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
+							} else if (count($menType) == 4) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+							} else if (count($menType) == 3) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+							} else if (count($menType) == 2) {
+								$sql .= " where type IN ('$menType[0]', '$menType[1]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
+							} else if (count($menType) == 1) {
+								$sql .= " where type IN ('$menType[0]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+							}
 						}
+
 						$result = $dbc->query($sql);
 
 						$count = $result->num_rows;
@@ -379,12 +466,25 @@ if (isset($_REQUEST['sexType'])) {
 	<script type="text/javascript" src="js/slick-custom.js"></script>
 	<!-- <script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script> -->
 
-	<!-- TODO: ovo je za cijenu..mozda cu ga promijenit  -->
 	<script type="text/javascript">
 		var filterBar = document.getElementById('filter-bar');
 
+		var lowPrice = $('#lowPrice').val()
+		var highPrice = $('#highPrice').val()
+
+
+		if (lowPrice == 0 || typeof lowPrice == 'undefined' || lowPrice === null) {
+			lowPrice = 0
+		}
+
+		if (highPrice == 0 || typeof highPrice == 'undefined' || highPrice === null) {
+			highPrice = 999
+		}
+
+
 		noUiSlider.create(filterBar, {
-			start: [0, 999],
+
+			start: [lowPrice, highPrice],
 			connect: true,
 			range: {
 				'min': 0,
@@ -397,8 +497,24 @@ if (isset($_REQUEST['sexType'])) {
 			document.getElementById('value-upper')
 		];
 
+		var priceFrom;
+		var priceTo;
+
 		filterBar.noUiSlider.on('update', function(values, handle) {
 			skipValues[handle].innerHTML = Math.round(values[handle]);
+
+			if (skipValues[handle].id == "value-lower") {
+				priceFrom = Math.round(values[handle])
+				$('#priceFrom').val(priceFrom)
+			} else if (skipValues[handle].id = "value-upper") {
+				priceTo = Math.round(values[handle])
+				$('#priceTo').val(priceTo)
+			}
+
+			if (priceFrom == priceTo) {
+				console.log('ne smije bit isti')
+			}
+
 		});
 	</script>
 	<script src="js/main.js"></script>
@@ -406,6 +522,110 @@ if (isset($_REQUEST['sexType'])) {
 	<script>
 		var year = new Date().getFullYear()
 		$('#currentYear').html(year)
+	</script>
+
+
+	<script>
+		$('#filterButton').click(function() {
+
+			var menJackets = document.getElementById("menJackets").checked;
+			var menSweatshirts = document.getElementById("menSweatshirts").checked;
+			var menTshirts = document.getElementById("menTshirts").checked;
+			var menJeans = document.getElementById("menJeans").checked;
+			var menAccessories = document.getElementById("menAccessories").checked;
+
+			var womenJackets = document.getElementById("womenJackets").checked;
+			var womenSweatshirts = document.getElementById("womenSweatshirts").checked;
+			var womenTshirts = document.getElementById("womenTshirts").checked;
+			var womenJeans = document.getElementById("womenJeans").checked;
+			var womenDresses = document.getElementById("womenDresses").checked;
+			var womenAccessories = document.getElementById("womenAccessories").checked;
+
+			var url = window.location.href;
+
+			if (url.indexOf("?") > -1) {
+				url = url.substr(0, url.indexOf("?"));
+			}
+
+			var menArray = []
+			if (menJackets == true) {
+				menArray.push('jackets')
+			}
+			if (menSweatshirts == true) {
+				menArray.push('sweatshirts')
+			}
+			if (menTshirts == true) {
+				menArray.push('tshirts')
+			}
+			if (menJeans == true) {
+				menArray.push('jeans')
+			}
+			if (menAccessories == true) {
+				menArray.push('accessories')
+			}
+
+			var womenArray = []
+			if (womenJackets == true) {
+				womenArray.push('jackets')
+			}
+			if (womenSweatshirts == true) {
+				womenArray.push('sweatshirts')
+			}
+			if (womenTshirts == true) {
+				womenArray.push('tshirts')
+			}
+			if (womenJeans == true) {
+				womenArray.push('jeans')
+			}
+			if (womenAccessories == true) {
+				womenArray.push('accessories')
+			}
+			if (womenDresses == true) {
+				womenArray.push('dresses')
+			}
+
+			if (menArray.length > 0 || womenArray.length > 0) {
+				if (url.indexOf("type") == -1) {
+					if (url.indexOf("?") < 0) {
+						console.log(menArray)
+						url += "?type" + "=" + menArray + "&sexType=men,women";
+					} else {
+						url += "&type" + "=" + menArray + "&sexType=men,women";
+					}
+				}
+			} else if (menArray.length > 0) {
+				if (url.indexOf("type") == -1) {
+					if (url.indexOf("?") < 0) {
+						console.log(menArray)
+						url += "?type" + "=" + menArray + "&sexType=men";
+					} else {
+						url += "&type" + "=" + menArray + "&sexType=men";
+					}
+				}
+			} else if (womenArray.length > 0) {
+				if (url.indexOf("type") == -1) {
+					if (url.indexOf("?") < 0) {
+						console.log(womenArray)
+						url += "?type" + "=" + womenArray + "&sexType=women";
+					} else {
+						url += "&type" + "=" + womenArray + "&sexType=women";
+					}
+				}
+			}
+
+
+			if (url.indexOf("?") < 0) {
+				url += "?priceFrom" + "=" + priceFrom;
+				url += "&priceTo" + "=" + priceTo;
+			} else {
+				url += "&priceFrom" + "=" + priceFrom;
+				url += "&priceTo" + "=" + priceTo;
+			}
+
+
+			window.location.href = url
+
+		})
 	</script>
 
 </body>

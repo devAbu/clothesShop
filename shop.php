@@ -274,55 +274,55 @@ if (isset($_REQUEST['priceTo'])) {
 
 						<span class="s-text8 p-t-5 p-b-5">
 							<?php
-							$sql = "select * from product";
+								$sql = "select * from product";
 
-							if (!empty($type) && !empty($sexType)  && !empty($priceTo)) {
+								if (!empty($type) && !empty($sexType)  && !empty($priceTo)) {
 
-								if (count($menType) == 5) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType'";
-								} else if (count($menType) == 4) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
-								} else if (count($menType) == 3) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
-								} else if (count($menType) == 2) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
-								} else if (count($menType) == 1) {
-									$sql .= " where type IN ('$menType[0]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
+									if (count($menType) == 5) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType'";
+									} else if (count($menType) == 4) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
+									} else if (count($menType) == 3) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
+									} else if (count($menType) == 2) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
+									} else if (count($menType) == 1) {
+										$sql .= " where type IN ('$menType[0]') AND price between '$priceFrom' and '$priceTo' and sexType = '$sexType' ";
+									}
+								} else if (!empty($type) && !empty($priceTo)) {
+
+									if (count($menType) == 5) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+									} else if (count($menType) == 4) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+									} else if (count($menType) == 3) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+									} else if (count($menType) == 2) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]') AND price between '$priceFrom' and '$priceTo' and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]') ";
+									} else if (count($menType) == 1) {
+										$sql .= " where type IN ('$menType[0]') AND price between '$priceFrom' and '$priceTo' and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]' )";
+									}
+								} else if (!empty($priceTo)) {
+									$sql .= " where price between '$priceFrom' and '$priceTo'";
+								} else if (!empty($type)) {
+									if (count($menType) == 5) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
+									} else if (count($menType) == 4) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+									} else if (count($menType) == 3) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+									} else if (count($menType) == 2) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
+									} else if (count($menType) == 1) {
+										$sql .= " where type IN ('$menType[0]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+									}
 								}
-							} else if (!empty($type) && !empty($priceTo)) {
 
-								if (count($menType) == 5) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
-								} else if (count($menType) == 4) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
-								} else if (count($menType) == 3) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
-								} else if (count($menType) == 2) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]') AND price between '$priceFrom' and '$priceTo' and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]') ";
-								} else if (count($menType) == 1) {
-									$sql .= " where type IN ('$menType[0]') AND price between '$priceFrom' and '$priceTo' and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]' )";
-								}
-							} else if (!empty($priceTo)) {
-								$sql .= " where price between '$priceFrom' and '$priceTo'";
-							} else if (!empty($type)) {
-								if (count($menType) == 5) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
-								} else if (count($menType) == 4) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]')";
-								} else if (count($menType) == 3) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
-								} else if (count($menType) == 2) {
-									$sql .= " where type IN ('$menType[0]', '$menType[1]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
-								} else if (count($menType) == 1) {
-									$sql .= " where type IN ('$menType[0]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
-								}
-							}
+								$result = $dbc->query($sql);
 
-							$result = $dbc->query($sql);
+								$count = $result->num_rows;
 
-							$count = $result->num_rows;
-
-							echo 'Showing ' . $count . ' results';
+								echo 'Showing ' . $count . ' results';
 							?>
 
 						</span>
@@ -330,58 +330,58 @@ if (isset($_REQUEST['priceTo'])) {
 
 					<div class="row">
 						<?php
-						$sql = "SELECT * FROM product";
+								$sql = "SELECT * FROM product";
 
-						if (!empty($type) && !empty($sexType) && !empty($priceTo)) {
-							if (count($menType) == 5) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo'";
-							} else if (count($menType) == 4) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
-							} else if (count($menType) == 3) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
-							} else if (count($menType) == 2) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
-							} else if (count($menType) == 1) {
-								$sql .= " where type IN ('$menType[0]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
-							}
-						} else if (!empty($type) && !empty($priceTo)) {
-							if (count($menType) == 5) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
-							} else if (count($menType) == 4) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
-							} else if (count($menType) == 3) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
-							} else if (count($menType) == 2) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]') AND price between '$priceFrom' and '$priceTo' and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]') ";
-							} else if (count($menType) == 1) {
-								$sql .= " where type IN ('$menType[0]') AND price between '$priceFrom' and '$priceTo' and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]' )";
-							}
-						} else if (!empty($priceTo)) {
-							$sql .= " where price between '$priceFrom' and '$priceTo'";
-						} else if (!empty($type)) {
-							if (count($menType) == 5) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
-							} else if (count($menType) == 4) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]')";
-							} else if (count($menType) == 3) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
-							} else if (count($menType) == 2) {
-								$sql .= " where type IN ('$menType[0]', '$menType[1]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
-							} else if (count($menType) == 1) {
-								$sql .= " where type IN ('$menType[0]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
-							}
-						}
+								if (!empty($type) && !empty($sexType) && !empty($priceTo)) {
+									if (count($menType) == 5) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo'";
+									} else if (count($menType) == 4) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
+									} else if (count($menType) == 3) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
+									} else if (count($menType) == 2) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
+									} else if (count($menType) == 1) {
+										$sql .= " where type IN ('$menType[0]') AND sexType = '$sexType' AND price between '$priceFrom' and '$priceTo' ";
+									}
+								} else if (!empty($type) && !empty($priceTo)) {
+									if (count($menType) == 5) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+									} else if (count($menType) == 4) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+									} else if (count($menType) == 3) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') AND price between '$priceFrom' and '$priceTo' and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]') ";
+									} else if (count($menType) == 2) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]') AND price between '$priceFrom' and '$priceTo' and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]') ";
+									} else if (count($menType) == 1) {
+										$sql .= " where type IN ('$menType[0]') AND price between '$priceFrom' and '$priceTo' and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]' )";
+									}
+								} else if (!empty($priceTo)) {
+									$sql .= " where price between '$priceFrom' and '$priceTo'";
+								} else if (!empty($type)) {
+									if (count($menType) == 5) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]', '$menType[4]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
+									} else if (count($menType) == 4) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]', '$menType[3]') and sexType in( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+									} else if (count($menType) == 3) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]', '$menType[2]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+									} else if (count($menType) == 2) {
+										$sql .= " where type IN ('$menType[0]', '$menType[1]') and sexType in ('$sexTypeArray[0]', '$sexTypeArray[1]')";
+									} else if (count($menType) == 1) {
+										$sql .= " where type IN ('$menType[0]') and sexType in ( '$sexTypeArray[0]', '$sexTypeArray[1]')";
+									}
+								}
 
-						$result = $dbc->query($sql);
+								$result = $dbc->query($sql);
 
-						$count = $result->num_rows;
+								$count = $result->num_rows;
 
-						if ($count > 0) {
-							while ($row = $result->fetch_assoc()) {
-								echo '<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+								if ($count > 0) {
+									while ($row = $result->fetch_assoc()) {
+										echo '<div class="col-sm-12 col-md-6 col-lg-4 p-b-50 product">
 							<div class="block2">
 								<div class="block2-img wrap-pic-w of-hidden pos-relative">
-									<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $row["name"] . '">
+									<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $row["name"] . '" id="product' . $row["ID"] . '" class="product">
 
 									<div class="block2-overlay trans-0-4">
 										<div class="block2-btn-addcart w-size1 trans-0-4">
@@ -403,8 +403,8 @@ if (isset($_REQUEST['priceTo'])) {
 								</div>
 							</div>
 						</div>';
-							}
-						}
+									}
+								}
 						?>
 					</div>
 
@@ -678,6 +678,18 @@ if (isset($_REQUEST['priceTo'])) {
 			if (checkedCategories.includes('dresses')) {
 				$('#womenDresses').prop('checked', true);
 			}
+		}
+
+		$('.product').click(function() {
+			var img = $(this).find("img")
+			openSingleProduct(img)
+		})
+
+		function openSingleProduct(img) {
+			id = img.attr("id")
+			var idRes = id.replace(/\D/g, "")
+
+			window.location.href = "singleProduct.php?ID=" + idRes
 		}
 	</script>
 
